@@ -2,7 +2,6 @@ package dev.forbit.interfaces;
 
 import lombok.NonNull;
 
-import java.util.Optional;
 import java.util.Set;
 
 
@@ -25,49 +24,6 @@ public interface Cell {
      */
     @NonNull int getY();
 
-    /*-------- DIRECTIONAL VARIABLES ----------- */
-
-    /**
-     * Gets the cell to the left, or empty if null
-     *
-     * @return left cell
-     */
-    @NonNull Optional<Cell> getLeft();
-
-    /**
-     * Gets the cell to the right, or empty if null
-     *
-     * @return right cell
-     */
-    @NonNull Optional<Cell> getRight();
-
-    /**
-     * Gets the cell above, or empty if null
-     *
-     * @return above cell
-     */
-    @NonNull Optional<Cell> getUp();
-
-    /**
-     * Gets the cell underneath, or empty if null
-     *
-     * @return underneath cell
-     */
-    @NonNull Optional<Cell> getDown();
-
-    /**
-     * Returns the bitwise value with right being the first direction
-     * 1 - right
-     * 2 - below
-     * 4 - left
-     * 8 - above
-     *
-     * @return the bitwise value of the cell
-     */
-    @NonNull default int getBitwiseValue() {
-        return (getRight().isPresent() ? 1 : 0) + (getDown().isPresent() ? 2 : 0) + (getLeft().isPresent() ? 4 : 0) + (getUp().isPresent() ? 8 : 0);
-    }
-
 
     /**
      * Gets a list of attributes that this cell has.
@@ -78,14 +34,7 @@ public interface Cell {
 
 
     default String getString() {
-        return String.format("Cell{ bitwise=%s, x=%s, y=%s, neighbouring=[ left=%s, right=%s, up=%s, down=%s ] }",
-                             getBitwiseValue(),
-                             getX(),
-                             getY(),
-                             getLeft().isPresent(),
-                             getRight().isPresent(),
-                             getUp().isPresent(),
-                             getDown().isPresent());
+        return String.format("Cell{ x=%s, y=%s, attributes=%s }", getX(), getY(), getAttributes());
 
     }
 

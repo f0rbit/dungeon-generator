@@ -1,5 +1,6 @@
 package dev.forbit.tests;
 
+import dev.forbit.enums.DefaultAttributes;
 import dev.forbit.implementation.Tile;
 import org.junit.jupiter.api.Test;
 
@@ -11,27 +12,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestCell {
 
-    @Test public void verifyOptionals() {
-        Tile cell = new Tile(1, 1);
-        cell.setDown(null);
-        cell.setUp(new Tile(1, 2));
-        cell.setLeft(new Tile(0, 1));
-        cell.setRight(null);
-
-        assertAll(() -> assertEquals(cell.getRight(), Optional.empty()),
-                  () -> assertEquals(cell.getDown(), Optional.empty()),
-                  () -> assertTrue(cell.getLeft().isPresent()),
-                  () -> assertTrue(cell.getUp().isPresent()));
-    }
 
     @Test public void verifyGetString() {
         Tile cell = new Tile(1, 1);
-        cell.setDown(null);
-        cell.setUp(new Tile(1, 2));
-        cell.setLeft(new Tile(0, 1));
-        cell.setRight(null);
 
-        assertEquals(cell.getString(), "Cell{ bitwise=12, x=1, y=1, neighbouring=[ left=true, right=false, up=true, down=false ] }");
+        cell.getAttributes().add(DefaultAttributes.END_ROOM);
+        cell.getAttributes().add(TestAttributeRegister.AdditionalAttributes.MAGIC_PORTAL_ROOM);
+
+        assertEquals(cell.getString(), "Cell{ x=1, y=1, attributes=[MAGIC_PORTAL_ROOM, END_ROOM] }");
     }
 
     @Test public void verifyXandY() {
