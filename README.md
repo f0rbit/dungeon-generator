@@ -1,5 +1,5 @@
-# Dungeon Generator
-A library for building custom 2D dungeons in Java
+# <img src="logo.png" width="50" height="50" style="margin-bottom: -12"/> Dungeon Generator
+A library for generating random 2D dungeons in Java
 
 # Usage
 
