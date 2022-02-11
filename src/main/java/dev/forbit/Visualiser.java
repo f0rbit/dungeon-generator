@@ -1,6 +1,7 @@
 package dev.forbit;
 
 import dev.forbit.enums.DefaultAttributes;
+import dev.forbit.implementation.DensityRule;
 import dev.forbit.implementation.RandomGeneration;
 import dev.forbit.interfaces.Cell;
 import dev.forbit.interfaces.Floor;
@@ -14,8 +15,8 @@ public class Visualiser {
 
     public static void main(String[] args) {
 
-        RandomGeneration generator = new RandomGeneration();
-        Optional<Floor> f = generator.generate(8, 8);
+        RandomGeneration generator = new RandomGeneration(new DensityRule(0.4f));
+        Optional<Floor> f = generator.generate(16, 12);
         if (f.isEmpty()) {
             System.out.println("Couldn't generate a floor!");
             return;

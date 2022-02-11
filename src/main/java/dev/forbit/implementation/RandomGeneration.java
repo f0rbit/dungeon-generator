@@ -6,13 +6,16 @@ import dev.forbit.interfaces.Floor;
 import dev.forbit.interfaces.Generator;
 import dev.forbit.interfaces.ValidationRule;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.*;
 
 public class RandomGeneration implements Generator {
 
-    @Getter @Setter Set<ValidationRule> validationRules = new HashSet<>(Set.of(new DensityRule(0.3f, 0.6f)));
+    @Getter private final Set<ValidationRule> validationRules = new HashSet<>();
+
+    public RandomGeneration(ValidationRule... validationRules) {
+        getValidationRules().addAll(Set.of(validationRules));
+    }
 
     @Override public Floor postGeneration(Floor floor) {
         // set end rooms

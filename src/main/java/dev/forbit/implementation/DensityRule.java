@@ -22,7 +22,6 @@ public class DensityRule implements ValidationRule {
     @Override public boolean isValid(Floor floor) {
         int size = floor.getWidth() * floor.getHeight();
         float percentageFull = floor.getCells().size() / (float) size;
-
-        return (percentageFull >= minDensity && percentageFull <= maxDensity);
+        return (percentageFull >= getMinDensity() && percentageFull <= getMaxDensity());
     }
 }

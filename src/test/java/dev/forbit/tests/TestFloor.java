@@ -2,6 +2,7 @@ package dev.forbit.tests;
 
 import dev.forbit.enums.DefaultAttributes;
 import dev.forbit.implementation.Level;
+import dev.forbit.interfaces.Floor;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -18,7 +19,7 @@ public class TestFloor {
     }
 
     @Test public void addingCell() {
-        Level level = new Level(8, 8);
+        Floor level = new Level(8, 8);
         level.createCell(4, 4, new HashSet<>());
         level.createCell(0, 0, new HashSet<>());
         level.createCell(6, 7, new HashSet<>());
