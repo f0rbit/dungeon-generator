@@ -1,13 +1,9 @@
 package dev.forbit.interfaces;
 
-import dev.forbit.util.AttributeRegister;
-
 import java.util.Optional;
 import java.util.Set;
 
 public interface Generator {
-
-    AttributeRegister getAttributeRegister();
 
     Set<ValidationRule> getValidationRules();
 

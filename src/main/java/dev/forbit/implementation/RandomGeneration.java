@@ -5,7 +5,6 @@ import dev.forbit.interfaces.Cell;
 import dev.forbit.interfaces.Floor;
 import dev.forbit.interfaces.Generator;
 import dev.forbit.interfaces.ValidationRule;
-import dev.forbit.util.AttributeRegister;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +12,6 @@ import java.util.*;
 
 public class RandomGeneration implements Generator {
 
-    @Getter @Setter AttributeRegister attributeRegister = new AttributeRegister();
     @Getter @Setter Set<ValidationRule> validationRules = new HashSet<>(Set.of(new DensityRule(0.3f, 0.6f)));
 
     @Override public Floor postGeneration(Floor floor) {
