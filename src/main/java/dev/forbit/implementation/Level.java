@@ -27,8 +27,8 @@ public class Level implements Floor {
     }
 
     @Override public Optional<Cell> getCell(int x, int y) {
-        if (x < 0 || x >= getWidth()) return Optional.empty();
-        if (y < 0 || y >= getHeight()) return Optional.empty();
+        if (x < 0 || x >= getWidth()) { return Optional.empty(); }
+        if (y < 0 || y >= getHeight()) { return Optional.empty(); }
         return Optional.ofNullable(cells[x][y]);
     }
 
@@ -41,8 +41,16 @@ public class Level implements Floor {
                                     getCell(x, y + 1).orElseGet(() -> null));
     }
 
-    @Override public Collection<Cell> getCells() {
-        return Arrays.stream(cells).flatMap(Arrays::stream).filter(Objects::nonNull).collect(Collectors.toSet());
+    @Override public void removeCell(int x, int y) {
+        cells[x][y] = null;
+    }
+
+    @Override public List<Cell> getCells() {
+        return Arrays.stream(cells).flatMap(Arrays::stream).filter(Objects::nonNull).collect(Collectors.toList());
+    }
+
+    @Override public List<Cell> getCells(Attribute attribute) {
+        return Arrays.stream(cells).flatMap(Arrays::stream).filter(Objects::nonNull).filter((cell) -> cell.getAttributes().contains(attribute)).collect(Collectors.toList());
     }
 
     private void addCell(int x, int y, @NonNull Cell cell) {
