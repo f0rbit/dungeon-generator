@@ -17,9 +17,8 @@ public class TestCell {
         Tile cell = new Tile(1, 1);
 
         cell.getAttributes().add(DefaultAttributes.END_ROOM);
-        cell.getAttributes().add(TestAttributeRegister.AdditionalAttributes.MAGIC_PORTAL_ROOM);
 
-        assertEquals(cell.getString(), "Cell{ x=1, y=1, attributes=[MAGIC_PORTAL_ROOM, END_ROOM] }");
+        assertEquals(cell.getString(), "Cell{ x=1, y=1, attributes=[END_ROOM] }");
     }
 
     @Test public void verifyXandY() {

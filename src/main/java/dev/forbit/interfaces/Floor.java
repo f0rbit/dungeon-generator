@@ -1,5 +1,7 @@
 package dev.forbit.interfaces;
 
+import lombok.NonNull;
+
 import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
@@ -31,14 +33,17 @@ public interface Floor {
     int getHeight();
 
     /**
-     * Gets the seed used to generate the floor
-     * @return seed
-     */
-    long getSeed();
-
-    /**
      * Gets a 2d array of cells
      * @return the cells
      */
     Collection<Cell> getCells();
+
+
+    /**
+     * Adds a cell to the floor
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param attributes the set of attribute for the tile to have initially
+     */
+    Cell createCell(int x, int y, @NonNull Set<Attribute> attributes);
 }

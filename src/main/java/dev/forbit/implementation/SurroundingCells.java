@@ -1,24 +1,24 @@
 package dev.forbit.implementation;
 
 import dev.forbit.interfaces.Cell;
-import lombok.Data;
-import lombok.NonNull;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
 public class SurroundingCells {
-    Cell left;
-    Cell right;
-    Cell up;
-    Cell down;
+    final Cell left;
+    final Cell right;
+    final Cell up;
+    final Cell down;
+    final Cell centre;
 
-    public SurroundingCells(Cell left, Cell right, Cell up, Cell down) {
+    public SurroundingCells(Cell centre, Cell left, Cell right, Cell up, Cell down) {
         this.left = left;
         this.right = right;
         this.up = up;
         this.down = down;
+        this.centre = centre;
     }
 
     public Optional<Cell> getLeft() {
@@ -37,12 +37,18 @@ public class SurroundingCells {
         return Optional.ofNullable(down);
     }
 
+    public Optional<Cell> getCentre() {
+        return Optional.ofNullable(centre);
+    }
+
     /**
      * Returns the bitwise value with right being the first direction
+     * <pre>
      * 1 - right
      * 2 - below
      * 4 - left
      * 8 - above
+     * </pre>
      *
      * @return the bitwise value of the cell
      */
@@ -52,6 +58,7 @@ public class SurroundingCells {
 
     /**
      * Gets a set of the surrounding cells, with null cells excluded.
+     *
      * @return the set of cells
      */
     public Set<Cell> getCells() {
