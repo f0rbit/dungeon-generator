@@ -13,12 +13,14 @@ public interface Cell {
 
     /**
      * Get the X coordinate of the cell relative to the floor
+     *
      * @return x
      */
     @NonNull int getX();
 
     /**
      * Get the y coordinate of the cell relative to the floor
+     *
      * @return y
      */
     @NonNull int getY();
@@ -69,9 +71,22 @@ public interface Cell {
 
     /**
      * Gets a list of attributes that this cell has.
+     *
      * @return a set of attributes
      */
     @NonNull Set<Attribute> getAttributes();
 
+
+    default String getString() {
+        return String.format("Cell{ bitwise=%s, x=%s, y=%s, neighbouring=[ left=%s, right=%s, up=%s, down=%s ] }",
+                             getBitwiseValue(),
+                             getX(),
+                             getY(),
+                             getLeft().isPresent(),
+                             getRight().isPresent(),
+                             getUp().isPresent(),
+                             getDown().isPresent());
+
+    }
 
 }
