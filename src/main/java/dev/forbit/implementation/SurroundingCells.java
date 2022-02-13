@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Data class for defining behaviour of surrounding cells
+ */
 public class SurroundingCells {
     final Cell left;
     final Cell right;
@@ -21,22 +24,47 @@ public class SurroundingCells {
         this.centre = centre;
     }
 
+    /**
+     * Gets the cell to the left of the centre
+     *
+     * @return left cell
+     */
     public Optional<Cell> getLeft() {
         return Optional.ofNullable(left);
     }
 
+    /**
+     * Gets the cell to the right of the centre
+     *
+     * @return right cell
+     */
     public Optional<Cell> getRight() {
         return Optional.ofNullable(right);
     }
 
+    /**
+     * Gets the cell above the centre
+     *
+     * @return above cell
+     */
     public Optional<Cell> getUp() {
         return Optional.ofNullable(up);
     }
 
+    /**
+     * Gets the cell below the centre
+     *
+     * @return below cell
+     */
     public Optional<Cell> getDown() {
         return Optional.ofNullable(down);
     }
 
+    /**
+     * Gets the centre cell
+     *
+     * @return
+     */
     public Optional<Cell> getCentre() {
         return Optional.ofNullable(centre);
     }
