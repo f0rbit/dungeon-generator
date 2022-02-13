@@ -1,4 +1,8 @@
-# <img src="logo.png" width="50" height="50" style="margin-bottom: -12"/> Dungeon Generator
+<p align="center">
+  <img src="logo.png" /> 
+  <h1>Dungeon Generator</h1>
+</p>
+
 A library for generating random 2D dungeons in Java
 
 # Usage
